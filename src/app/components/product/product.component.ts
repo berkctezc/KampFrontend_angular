@@ -10,7 +10,7 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductComponent implements OnInit {
 
   products: Product[] = [];
-  dataLoaded=false;
+  dataLoaded = false;
 
   constructor(private productService: ProductService) { }
 
@@ -21,8 +21,7 @@ export class ProductComponent implements OnInit {
   getProducts() {
     this.productService.getProducts().subscribe(response => {
       this.products = response.data
-      this.dataLoaded=true;
+      this.dataLoaded = true;
     })
-
   }
 }

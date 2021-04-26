@@ -15,7 +15,7 @@
     placeholder="arama ifadesi giriniz"
   />
 </div>
-<div class="alert alert-warning" *ngIf="filterText.length>2">
+<div class="alert alert-warning" *ngIf="filterText.length > 2">
   {{ filterText }} aradınız
 </div>
 
@@ -28,14 +28,20 @@
       <th>Fiyat</th>
       <th>KDV'li Fiyat</th>
       <th>Stok Adedi</th>
+      <th>Aksiyonlar</th>
     </tr>
   </thead>
-  <tr *ngFor="let product of products | filterPipe:filterText">
-    <td>{{ product.productId }}</td>
-    <td>{{ product.productName | uppercase }}</td>
-    <td>{{ product.categoryId }}</td>
-    <td>{{ product.unitPrice | currency: "₺" }}</td>
-    <td>{{ product.unitPrice | vatAdded: 18 | currency: "₺" }}</td>
-    <td>{{ product.unitsInStock }}</td>
-  </tr>
+  <tbody>
+    <tr *ngFor="let product of products | filterPipe: filterText">
+      <td>{{ product.productId }}</td>
+      <td>{{ product.productName | uppercase }}</td>
+      <td>{{ product.categoryId }}</td>
+      <td>{{ product.unitPrice | currency: "₺" }}</td>
+      <td>{{ product.unitPrice | vatAdded: 18 | currency: "₺" }}</td>
+      <td>{{ product.unitsInStock }}</td>
+      <td>
+        <button (click)="addToCart(product)" type="button" class="btn btn-success">Sepete ekle</button>
+      </td>
+    </tr>
+  </tbody>
 </table>

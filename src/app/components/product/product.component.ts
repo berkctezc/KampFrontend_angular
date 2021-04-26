@@ -11,15 +11,16 @@ import { ProductService } from 'src/app/services/product.service';
 export class ProductComponent implements OnInit {
 
   products: Product[] = [];
-  dataLoaded = false;
+  dataLoaded: boolean = false;
+  filterText = "";
 
   constructor(private productService: ProductService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.activatedRoute.params.subscribe(params => {
       if (params["categoryId"]) {
-        this.getProductsByCategory(params["categoryId"]) 
-      }else{
+        this.getProductsByCategory(params["categoryId"])
+      } else {
         this.getProducts()
       }
     })

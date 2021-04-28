@@ -5,7 +5,7 @@
         <h5 class="title">Ürün Ekle</h5>
       </div>
       <div class="card-body">
-        <form [formGroup]="productAddForm"></form>
+        <form [formGroup]="productAddForm">
         <div class="mb-3">
           <label for="productName">Ürün Adı</label>
           <div class="form-group">
@@ -54,6 +54,7 @@
             />
           </div>
         </div>
+    </form>
       </div>
       <div class="card-footer">
         <button class="btn btn-fill btn-primary" (click)="add()">Ekle</button>
